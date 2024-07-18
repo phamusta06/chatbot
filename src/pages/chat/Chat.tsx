@@ -6,21 +6,74 @@ import { ChatBuble } from "../../components/chatbuble/ChatBuble"
   const txtArea=useRef(null)
    
   return (
-    <div className="flex justify-center w-full ">
-        <div className="flex flex-col min-h-screen max-w-[750px] w-full  ">
-          <div className="grow space-y-3  py-3   ">
+    <div className=" flex justify-center w-full ">
+        <div className="  flex flex-col items-center px-10  mb-24 max-w-[750px] w-full  ">
+          <div className=" w-full space-y-3   py-10 pb-  ">
        <ChatBuble content="fkljge" userType=""/>
        <ChatBuble content="fkljge" userType="fdef"/>
        <ChatBuble content="fkljge" userType=""/>
        <ChatBuble content="fkljge" userType="rfref"/>
        <ChatBuble content="fkljge" userType=""/>
        <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="fdef"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType="rfref"/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+       <ChatBuble content="fkljge" userType=""/>
+     
+  
 
           </div>
-          <div className="bg-white -full rounded-t-3xl border-[1px] border-gray-700/15 overflow-hidden p-0">
-          <textarea style={{}} ref={txtArea} className="  w-full  p-3 resize-none outline-none overflow-y-hidden max-h-[400px] font-semibold text-lg   " >re</textarea>
-          <div className="     px-4 text-center">chatbot</div>          </div>
-            
+         <div className="flex justify-center w-full mt-3 ">
+         <div className=" bg-white w-full  fixed bottom-0 rounded-t-3xl max-w-[750px] border-[1px] border-gray-700/15 overflow-hidden p-0">
+          <textarea style={{}} ref={txtArea} className="  w-full  p-3 resize-none outline-none  max-h-[400px] font-semibold text-lg   " >re</textarea>
+          <div className="     px-4 text-center">chatbot</div>         
+             </div>
+         </div>
          </div>
 
     </div>
