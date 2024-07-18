@@ -1,0 +1,17 @@
+body{
+    @apply   bg-gradient-to-br from-gray-200 via-gray-200 to-black/70
+}
+
+*::-webkit-scrollbar {
+    width: 6px;                
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: rgba(128, 128, 128, 0);         
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(29, 29, 29);    
+    border-radius: 20px;        
+  
+  }
