@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowUp, ChevronUp, MessagesSquare } from "lucide-react";
 import CardRecent from "../../components/cardRecent/CartRecent";
 export const Home = () => {
+
   return (
     <div className="  w-full">
       <div className="flex flex-col gap-6 pt-20 min-h-screen max-w-[750px] mx-auto w-full py-3">
@@ -21,7 +22,7 @@ export const Home = () => {
               placeholder="How can chatbot help you today"
               className="  w-full  p-3 resize-none outline-none overflow-y-hidden max-h-[400px] text-sm text-slate-900 font-medium"
             >
-              azazeze
+           
             </textarea>
             <div className="px-4 text-center font-bold">chatbot</div>
           </div>
