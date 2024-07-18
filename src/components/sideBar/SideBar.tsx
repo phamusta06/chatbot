@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
-import logo from "../../assets/logo.png";
+import logo from "../../assets/ai.png";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 const SideBar = () => {
   return (
