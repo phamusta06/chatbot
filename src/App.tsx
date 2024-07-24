@@ -9,7 +9,7 @@ import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("tokenChatBot") || false);
+  const [token, setToken] = useState(localStorage.getItem("token") || false);
   const location = useLocation();
 
   const showSideBar: boolean = ["/login", "/signup"].includes(
@@ -17,12 +17,11 @@ function App() {
   );
 
   return (
+ <>
+   <div className="fixed top-0 z-[-2] h-screen w-full  bg-slate-50 bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,105,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)] "/>
+
     <div
-      className={
-        !showSideBar
-          ? `flex min-h-screen`
-          : " "
-      }
+      className={`  ${!showSideBar ? `flex min-h-screen`: " "}`}
     >
       {!showSideBar && <SideBar />}
       <Routes>
@@ -35,7 +34,7 @@ function App() {
           element={!token ? <Signup /> : <Navigate to="/" />}
         />
         <Route
-          path="/chat"
+          path="/chat/"
           element={token ? <Chat /> : <Navigate to="/login" />}
         />
         <Route path="/" element={token ? <Home /> : <Navigate to="/login" />} />
@@ -45,6 +44,7 @@ function App() {
         />
       </Routes>
     </div>
+ </>
   );
 }
 
