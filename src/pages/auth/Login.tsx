@@ -31,6 +31,7 @@ const Login = () => {
           transition={{ duration: 0.5 }}
           src={logo}
           alt="logo ai"
+          draggable={false}
         />
       </div>
       <div className="md:w-1/3 max-w-sm">

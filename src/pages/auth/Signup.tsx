@@ -22,11 +22,12 @@ const Signup = () => {
         initial={{scale:0}}
         animate={{scale:1}}
         transition={{duration:0.5}}
+        draggable={false}
         src={logo} alt="logo ai" />
       </div>
       <div className="md:w-1/3 max-w-sm">
         <div className="text-center   m-5">
-          <label className="tracking-wider font-semibold ">Sign in with</label>
+          <label className="tracking-wider font-semibold ">create account </label>
         </div>
 
         <input
