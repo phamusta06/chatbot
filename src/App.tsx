@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import "./App.css";
 import SideBar from "./components/sideBar/SideBar";
 import Chat from "./pages/chat/Chat";
@@ -7,6 +8,7 @@ import { Home } from "./pages/home/Home";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || false);
@@ -15,9 +17,16 @@ function App() {
   const showSideBar: boolean = ["/login", "/signup"].includes(
     location.pathname
   );
+  
+  const queryClient = new QueryClient()
+
 
   return (
- <>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+
+     
+
    <div className="fixed top-0 z-[-2] h-screen w-full  bg-slate-50 bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,105,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)] "/>
 
     <div
@@ -34,7 +43,7 @@ function App() {
           element={!token ? <Signup /> : <Navigate to="/" />}
         />
         <Route
-          path="/chat/"
+          path="/chat/:id"
           element={token ? <Chat /> : <Navigate to="/login" />}
         />
         <Route path="/" element={token ? <Home /> : <Navigate to="/login" />} />
@@ -43,8 +52,9 @@ function App() {
           element={token ? <History /> : <Navigate to="/login" />}
         />
       </Routes>
+   
     </div>
- </>
+ </QueryClientProvider>
   );
 }
 
