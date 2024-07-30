@@ -1,12 +1,17 @@
- import logo from '../../assets/ai.png'
+ import { useContext } from 'react';
+import logo from '../../assets/ai.png'
+import { UserContext } from '../../context/userContext';
+ 
  type contentType = {
   content: string;
-  userType: string;
+  userId: string;
 };
 export const ChatBuble = (props: contentType) => {
+  const  CurrentUserContext=useContext(UserContext)
+  const{user}=CurrentUserContext;
   return (
     <div className=" ">
-      {props.userType.length > 0 ? (
+      {user.id==="" ? (
         <div className="flex justify-end   ">
           
           <div className="flex items-center bg-white shadow-sm rounded-xl p-2 gap-1 flex-row-reverse  ">
