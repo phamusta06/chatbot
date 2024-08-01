@@ -7,10 +7,17 @@ import { UserContext } from "../../context/userContext";
 import CardRecent from "../../components/cardRecent/CartRecent";
 import { motion, AnimatePresence } from "framer-motion";
 import HistoryEmpty from "../../components/historyEmpty/HistoryEmpty";
+import useNewMessage from "../hooks/useNewMessage";
 
 const urlApi: string = import.meta.env.VITE_API_URL;
 
 export const Home = () => {
+  const {
+    data: dataMessage,
+    loading: loadingMessage,
+    handleMessage,
+  } = useNewMessage();
+
   const [areaValue, setAreaValue] = useState<string>("");
   const navigate = useNavigate();
   const CurrentUserContext = useContext(UserContext);
@@ -24,23 +31,30 @@ export const Home = () => {
 
   const [showConversation, setShowConversation] = useState<boolean>(true);
 
-  const { data: currentUser, isSuccess: successUser } = useQuery({
+  const { data: currentUser, isSuccess: successUser } = useQuery<any>({
     queryKey: ["currentUser"],
     queryFn: getuser,
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    gcTime: 1000 * 60 * 2,
   });
 
   const { data: dataConversation, isSuccess: succesConversation } =
     useQuery<any>({
       queryKey: ["conversations"],
       queryFn: async () => {
-        return await axios.post(`${urlApi}/api/v1/conversation`, {
-          userId: currentUser?._id,
-        },{withCredentials:true});
+        return await axios.post(
+          `${urlApi}/api/v1/conversation`,
+          {
+            userId: currentUser?._id,
+          },
+          { withCredentials: true }
+        );
       },
       refetchOnWindowFocus: false,
       enabled: !!successUser,
       refetchOnMount: false,
+      gcTime: 1000 * 60 * 2,
     });
   useEffect(() => {
     if (currentUser?._id && successUser) {
@@ -54,29 +68,29 @@ export const Home = () => {
         ...user,
         conversations: dataConversation?.data,
       });
-      
     }
   }, [dataConversation, currentUser?._id]);
-  const handleClickCard = (id: string) => {
-    navigate(`/chat/${id}`);
-  };
 
+  const handleSendMessage = async () => {
+    const dataMessage = await handleMessage({
+      userId: user?.id,
+      conversationId: "66a91be2383ec19601549e73",
+      text: areaValue,
+    });
 
-  const handleSendMessage = () => {
-
-    navigate("/chat");
+    navigate(`/chat/${dataMessage?._id}`);
   };
 
   return (
     <div className="min-h-[100vh]  w-full">
       <div className="flex flex-col gap-6 pt-20 min-h-screen max-w-[750px] mx-auto w-full py-3 px-1 ">
         <div className="flex justify-center items-center  w-full ">
-          <h1 className="text-3xl  text-center font-semibold text-gray-800  ">
+          <h1 className="text-3xl  text-center font-serif text-gray-800  ">
             Welcome {currentUser?.name}
           </h1>
         </div>
         {/* input message */}
-        <div >
+        <div>
           <div className="relative bg-white w-full rounded-3xl overflow-hidden p-2 pr-10 shadow-sm">
             {areaValue && (
               <button
@@ -131,18 +145,20 @@ export const Home = () => {
               {showConversation && (
                 <div className="grid grid-cols-3 gap-3 flex-wrap w-full">
                   {user?.conversations?.map((item: any, index: number) => (
-                  
                     <motion.div
-                      onClick={() => handleClickCard(item?._id)}
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
-                     
-                      
-                      <CardRecent size={9} icon={true} content={item} time={item?.createdAt} />
+                      <CardRecent
+                        size={9}
+                        icon={true}
+                        content={item}
+                        time={item?.createdAt}
+                        id={item._id}
+                      />
                     </motion.div>
                   ))}
                 </div>
