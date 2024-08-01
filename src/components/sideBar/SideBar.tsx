@@ -54,7 +54,7 @@ const SideBar = () => {
                   
                   </span><MessagesSquare className="w-4 text-black/70" />
                  {
-                  item.titletMsg?.text.substring(0,30)
+                  item.titletMsg?.text.substring(0,24)
 
                  }
                 </span>
