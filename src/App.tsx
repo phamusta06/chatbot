@@ -11,7 +11,7 @@ import Signup from "./pages/auth/Signup";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token") || false);
+  const token:string | null  =  localStorage.getItem("token")  
   const location = useLocation();
 
   const showSideBar: boolean = ["/login", "/signup"].includes(
