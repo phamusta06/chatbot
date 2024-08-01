@@ -31,18 +31,22 @@ const Chat = () => {
         userId: user.id,
       });
       const getMessage: any[] = res?.messages;
-      if (getMessage.length === 1) {
-        
-        setMessages([{ message: getMessage[0].text, userId: user.id }]);
+      if (getMessage.length === 1 && startConversation.current) {
+        console.log(startConversation.current)
+        startConversation.current=false;
         const message:string=getMessage[0].text
-        if(startConversation.current)
-        {
-
-           
-          startConversation.current=false;
-          handleSendMessage(message)  
+        setMessages([{ message, userId: user.id }]);
+        const res=await axios.post(`${urlApi}/api/v1/ai`,{prompt:message})
+        setMessages((prev) => [...prev,{message:res.data?.generatedText,userId:'6699b6c51d28f4c2b1a215af'}])
+        await handleMessage({
+          conversationId: idConversation.id??'',
+          userId: '6699b6c51d28f4c2b1a215af',
+           text:res.data?.generatedText
+        });
+            
           
-        }
+        
+          
 
  
         
@@ -72,13 +76,12 @@ const Chat = () => {
     }
   }, [messages]);
  const handleSendMessage=async(text:string) => {
-  
+  setEnableArea('')
       setMessages((prev) => [...prev,{message:text,userId:user?.id}])
     await handleMessage({
       conversationId: idConversation.id??'',
       userId: user.id, text
-    });
-    setEnableArea('')
+    });  
    
       txtArea!.current!.value ='';
     
