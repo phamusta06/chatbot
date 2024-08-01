@@ -28,7 +28,7 @@ const CartRecent: FC<CartRecentProps> = ({ size, content, time, icon, id }) => {
         <MessagesSquare className="w-4 text-black/70" />
       </div>
       <h2 className="font-semibold text-sm text-black/90">
-        {content?.titletMsg?.text}
+        {content?.titletMsg?.text.substring(0,60)}
       </h2>
       <p className="text-gray-400">{time ? convertToDaysAgo(time) : ""}</p>
     </div>
