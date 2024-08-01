@@ -2,8 +2,7 @@ import { MessagesSquare } from "lucide-react";
 import { FC } from "react";
 import { formatDistanceToNowStrict, parseISO } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import useNewMessage from "../../pages/hooks/useNewMessage";
-
+ 
 interface CartRecentProps {
   size: number;
   icon?: boolean;

@@ -14,13 +14,13 @@ const urlApi: string = import.meta.env.VITE_API_URL;
 const Chat = () => {
   const [enableArea, setEnableArea] = useState<string>("");
   const startConversation=useRef<boolean>(true)
-  const txtArea = useRef<HTMLAreaElement>(null);
-  const showMessages = useRef<HTMLDivElement>();
+  const txtArea = useRef<HTMLTextAreaElement>(null);
+  const showMessages = useRef<HTMLDivElement>(null);
   const CurrentUserContext = useContext(UserContext);
   const { user } = CurrentUserContext;
   const idConversation = useParams();
 
-  const { loading, data, handleMessage } = useNewMessage();
+  const {  handleMessage } = useNewMessage();
   const [messages, setMessages] = useState<messageUser[]>([]);
 
   const getConversation = async () => {
@@ -37,6 +37,9 @@ const Chat = () => {
         const message:string=getMessage[0].text
         if(startConversation.current)
         {
+
+           
+          startConversation.current=false;
           handleSendMessage(message)  
           
         }
@@ -76,12 +79,16 @@ const Chat = () => {
       userId: user.id, text
     });
     setEnableArea('')
-    txtArea.current.value = null;
+   
+      txtArea!.current!.value ='';
+    
+    
     const res=await axios.post(`${urlApi}/api/v1/ai`,{prompt:text})
     setMessages((prev) => [...prev,{message:res.data?.generatedText,userId:'6699b6c51d28f4c2b1a215af'}])
     await handleMessage({
       conversationId: idConversation.id??'',
-      userId: user.id, text:res.data?.generatedText
+      userId: '6699b6c51d28f4c2b1a215af',
+       text:res.data?.generatedText
     });
    
   }
@@ -112,7 +119,7 @@ const Chat = () => {
             ></textarea>
              <button
                disabled={enableArea.trim().length<=0}
-          onClick={() => { handleSendMessage( txtArea?.current?.value) }}
+          onClick={() => { handleSendMessage( txtArea!.current!.value) }}
         
 
                  

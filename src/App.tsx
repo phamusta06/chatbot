@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import "./App.css";
 import SideBar from "./components/sideBar/SideBar";

@@ -13,9 +13,7 @@ const urlApi: string = import.meta.env.VITE_API_URL;
 
 export const Home = () => {
   const {
-    data: dataMessage,
-    loading: loadingMessage,
-    handleMessage,
+      handleMessage,
   } = useNewMessage();
 
   const [areaValue, setAreaValue] = useState<string>("");

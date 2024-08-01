@@ -4,7 +4,7 @@ import logo from "../../assets/ai.png";
 import useSignup from "../hooks/useSignup";
 import { useState } from "react";
 const Signup = () => {
-  const {signup,loading}=useSignup();
+  const {signup}=useSignup();
   const [inputs,setInputs]=useState({
     name:'',
     email:'',

@@ -17,6 +17,7 @@ type ApiResponse = {
   userId: string;
   createdAt: string;
   updatedAt: string;
+  messages?:any
 };
 
 const urlApi: string = import.meta.env.VITE_API_URL;

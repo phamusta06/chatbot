@@ -12,7 +12,7 @@ const urlApi: string = import.meta.env.VITE_API_URL;
 
 const SideBar = () => {
   const  CurrentUserContext=useContext(UserContext)
-  const { user, setUser  } = CurrentUserContext;
+  const { user} = CurrentUserContext;
   const handleLogout = async () => {
     try {
       await axios.get(`${urlApi}/api/v1/logout`);
