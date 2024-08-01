@@ -25,7 +25,7 @@ const SideBar = () => {
   return ( 
     <div className="   group lg:w-10  z-50    ">
 <img src={logo}   className="hidden lg:block fixed   w-14 top-2 cursor-pointer" />
-<Text className="absolute w-14 top-5 cursor-pointer" />
+<Text className="absolute w-14 top-5 cursor-pointer block lg:hidden" />
 
 
       <div
