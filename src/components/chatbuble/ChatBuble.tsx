@@ -12,13 +12,13 @@ export const ChatBuble = (props: contentType) => {
             <p className="text-black text-lg px-3  ">{props.content}</p>
           </div>
         </div>
-      ) : (
-        <div className="flex justify-start   gap-2">
-          <img src={logo} className="   w-6 rounded-full h-6" />
-          <div className="flex items-center  shadow-sm rounded-xl p-2 gap-1  ">
+      ) : (props.content.length!==0 &&
+    (    <div className="flex justify-start    gap-2">
+          <img src={logo} className="w-8 rounded-full h-8" />
+          <div className="flex items-center  rounded-xl p-2 gap-1  ">
             <p className="text-black text-lg">{props.content}</p>
           </div>
-        </div>
+        </div>)
       )}
     </div>
   );
