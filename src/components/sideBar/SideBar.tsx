@@ -46,7 +46,7 @@ const SideBar = () => {
           <h2 className="font-semibold">Recents</h2>
           <ul className="space-y-1">
             {user?.conversations?.length != 0 ? (
-             user?.conversations?.map((item:any,index:number) => (
+             user?.conversations?.slice(0,10).map((item:any,index:number) => (
               <li key={index}>
               <Link to={`/chat/${item._id}`}>
                 <span className=" flex items-center gap-1 h-5 p-3 overflow-hidden font-extralight hover:bg-slate-400/30 rounded-md px-1 ">
@@ -60,10 +60,23 @@ const SideBar = () => {
                 </span>
               </Link>
             </li>
+        
              ))
             ) : (
               <HistoryEmpty size={60} />
             )}
+            {
+              user?.conversations?.length > 10 && (
+                <li>
+                  <Link to={`/history`}>
+                    <span className="flex items-center gap-1 h-5 p-3 overflow-hidden font-extralight hover:bg-slate-400/30 rounded-md px-1 ">
+                      See all conversations
+                    </span>
+                  </Link>
+                </li>
+              )
+
+            }
           </ul>
         </div>
         <div className="absolute bottom-4 left-4">

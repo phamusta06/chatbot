@@ -141,8 +141,8 @@ export const Home = () => {
           {user?.conversations?.length != 0 ? (
             <AnimatePresence>
               {showConversation && (
-                <div className="grid grid-cols-3 gap-3 flex-wrap w-full">
-                  {user?.conversations?.map((item: any, index: number) => (
+                <div className="grid grid-cols-3 gap-3 flex-wrap w-full ">
+                  {user?.conversations?.slice(0,6).map((item: any, index: number) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
