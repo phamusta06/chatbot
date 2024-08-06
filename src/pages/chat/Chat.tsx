@@ -90,6 +90,7 @@ if (idConversation.id && user?.id) {
 
         const reader = response!.body!.getReader();
         const decoder = new TextDecoder();
+        let fullText=''
         const a=true
         while (a) {
             const { value, done } = await reader.read();
@@ -104,13 +105,14 @@ if (idConversation.id && user?.id) {
                     if (data.text&&!data.done) {
                       
                        setResponseAi((prev) => prev +''+data.text)
+                       fullText+=data.text;
                     }
                     if (data.done) {
                         console.log('Stream complete');
                         await handleMessage({
                                 conversationId: idConversation.id??'',
                                 userId: '6699b6c51d28f4c2b1a215af',
-                          text:data.text
+                          text:fullText
                           });
                         return;
                     }
@@ -178,19 +180,21 @@ return (
               
               setEnableArea(e?.target?.value);
             }}
-            //  onKeyDown={(e) => { 
-            //   if (e.key === 'Enter') {
-                
-            //     handleSendMessage(txtArea!.current!.value);
-            //   }
-            //  }}
+             onKeyDown={(e) => { 
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                if(!txtArea.current?.value)return
+                            
+                handleSendMessage(txtArea!.current!.value);
+              }
+             }}
             ref={txtArea}
             className="  w-full  p-3 resize-none outline-none  max-h-[400px] font-semibold text-lg   "
           ></textarea>
           {/* Send button */}
           <button
-          disabled={enableArea.length<1}
-            // disabled={enableArea.trim().length<=0}
+          disabled={enableArea.trim().length<1}
+            
             onClick={() => handleSendMessage(txtArea!.current!.value)}
            
             className="absolute right-2 top-2 w-8 h-8 rounded-xl disabled:opacity-35 disabled:cursor-not-allowed bg-slate-900 hover:bg-slate-700 text-center "
